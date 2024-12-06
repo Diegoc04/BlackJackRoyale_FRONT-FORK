@@ -80,7 +80,7 @@ const BlackjackTable = () => {
   const [userCards, setUserCards] = useState([Bitmap53, Bitmap53]);
   const [showDecisionPrompt, setShowDecisionPrompt] = useState(false);
   const [gameStatus, setGameStatus] = useState(null);
-  const [setIsDealing] = useState(false); // Controla si Luigi está repartiendo
+  const [isDealing, setIsDealing] = useState(false); // Controla si Luigi está repartiendo
   const [luigiState, setLuigiState] = useState('static'); // Puede ser 'static' o 'animated'
   const hasDealtCardsRef = useRef(false); // Referencia para controlar el estado de las cartas
   const showCardsRef = useRef(false); // Maneja si las cartas deben mostrarse
@@ -357,12 +357,11 @@ const BlackjackTable = () => {
 
       <div className="main-container">
         <div className="left-column">
-        <div className="card-slots">
-          {userCards.map((card) => (
-            <img key={card} src={card} alt={`Carta ${card}`} className="card-slot" />
-          ))}
-        </div>
-
+          <div className="card-slots">
+            {userCards.map((card, index) => (
+              <img key={index} src={card} alt={`Carta ${index + 1}`} className="card-slot" />
+            ))}
+          </div>
 
           <div className="button-row">
             <button className="boton-doblar" onClick={() => playerAction('double')}>
@@ -424,9 +423,18 @@ const BlackjackTable = () => {
                     </div>
 
                     <div className="player-cards">
-                      {userCards.map((card) => (
-                        <img key={card} src={card} alt={`Carta ${card}`} className="player-card" />
-                      ))}
+                      {showCardsRef.current &&
+                        playerInfo[player]?.hand.map((card, index) => {
+                          const cardImage = getBitmapImage(card.suit, card.rank);
+                          return (
+                            <img
+                              key={index}
+                              src={cardImage}
+                              alt={`${card.rank} of ${card.suit}`}
+                              className="player-card"
+                            />
+                          );
+                        })}
                     </div>
                     <div className="player-info1">
                 <p>
