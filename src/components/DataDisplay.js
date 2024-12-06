@@ -9,6 +9,7 @@ import pablo from './img/pablo.png';
 import logo from './img/logoo.png'; // Importa el logo
 import BotonAuth from './BotonAuth'; // Botón de autenticación
 import { useUser } from './UserContext';
+import PropTypes from 'prop-types';
 
 export const IdTokenData = (props) => {
   const { name, preferred_username } = getNameAndUsername(props.idTokenClaims);
@@ -185,6 +186,10 @@ export const IdTokenData = (props) => {
       </div>
     </>
   );
+};
+
+IdTokenData.propTypes = {
+  idTokenClaims: PropTypes.object.isRequired,
 };
 
 export default IdTokenData;
