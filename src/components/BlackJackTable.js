@@ -425,11 +425,12 @@ const BlackjackTable = () => {
 
                     <div className="player-cards">
                       {showCardsRef.current &&
-                        playerInfo[player]?.hand.map((card, index) => {
+                        playerInfo[player]?.hand.map((card) => {
                           const cardImage = getBitmapImage(card.suit, card.rank);
+                          const cardKey = `${card.rank}-${card.suit}`; // Unique key based on rank and suit
                           return (
                             <img
-                              key={index}
+                              key={cardKey}
                               src={cardImage}
                               alt={`${card.rank} of ${card.suit}`}
                               className="player-card"
@@ -437,6 +438,7 @@ const BlackjackTable = () => {
                           );
                         })}
                     </div>
+
                     <div className="player-info1">
                 <p>
                     👤{' '}
