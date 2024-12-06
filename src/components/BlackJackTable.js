@@ -80,7 +80,7 @@ const BlackjackTable = () => {
   const [userCards, setUserCards] = useState([Bitmap53, Bitmap53]);
   const [showDecisionPrompt, setShowDecisionPrompt] = useState(false);
   const [gameStatus, setGameStatus] = useState(null);
-  const [isDealing, setIsDealing] = useState(false); // Controla si Luigi está repartiendo
+  const [setIsDealing] = useState(false); // Controla si Luigi está repartiendo
   const [luigiState, setLuigiState] = useState('static'); // Puede ser 'static' o 'animated'
   const hasDealtCardsRef = useRef(false); // Referencia para controlar el estado de las cartas
   const showCardsRef = useRef(false); // Maneja si las cartas deben mostrarse
