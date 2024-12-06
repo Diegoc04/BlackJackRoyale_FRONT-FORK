@@ -80,7 +80,7 @@ const BlackjackTable = () => {
   const [userCards, setUserCards] = useState([Bitmap53, Bitmap53]);
   const [showDecisionPrompt, setShowDecisionPrompt] = useState(false);
   const [gameStatus, setGameStatus] = useState(null);
-  const [setIsDealing] = useState(false); // Controla si Luigi está repartiendo
+  const [isDealing, setIsDealing] = useState(false); // Controla si Luigi está repartiendo
   const [luigiState, setLuigiState] = useState('static'); // Puede ser 'static' o 'animated'
   const hasDealtCardsRef = useRef(false); // Referencia para controlar el estado de las cartas
   const showCardsRef = useRef(false); // Maneja si las cartas deben mostrarse
@@ -164,9 +164,7 @@ const BlackjackTable = () => {
         if (data.winners?.length) {
           toast.success(`Ganadores: ${data.winners.join(', ')}`);
           setTimeout(() => {
-            if (activeSocket && roomId) {
-              activeSocket.emit('restartGame', { roomId });
-            }
+            activeSocket.emit('restartGame', { roomId });
             setShowDecisionPrompt(true);
             hasDealtCardsRef.current = false; // Permite que Luigi reparta cartas nuevamente
             enApuestasToastShownRef.current = false; // Resetea para una nueva ronda
