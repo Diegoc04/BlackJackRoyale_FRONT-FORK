@@ -117,7 +117,7 @@ const History = () => {
   if (loading) {
     content = <div>Cargando historial...</div>;
   } else if (history.length > 0) {
-    content = history.map((game, index) => {
+    content = history.map((game) => {
       const currentPlayer = game.players.find(
         (player) => player.nickName === currentUserNickName
       );
@@ -134,7 +134,7 @@ const History = () => {
           : game.players.find((player) => player.nickName === winnerName)?.hand || [];
 
       return (
-        <div key={index} className="history-item">
+        <div key={game.id} className="history-item">
           {/* Contenedor izquierdo */}
           <div className="result-container">
             <p className={`result-header ${resultClass}`}>
