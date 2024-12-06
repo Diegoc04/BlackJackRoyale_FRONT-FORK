@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Bitmap53 from "./img/Bitmap57.png"; 
 import "./css/History.css";
