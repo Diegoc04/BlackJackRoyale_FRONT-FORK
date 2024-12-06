@@ -245,33 +245,6 @@ const BlackjackTable = () => {
     }
     return null;
   };
-  const repartirCartas = () => {
-    if (isDealing || hasDealtCardsRef.current) {
-      console.log("Luigi ya repartió o está repartiendo cartas. No se ejecuta de nuevo.");
-      return;
-    }
-
-    toast.info('¡Luigi está repartiendo las Cartas!');
-
-    setIsDealing(true);
-    hasDealtCardsRef.current = true; // Bloquea futuros repartos inmediatamente
-
-    setLuigiState('animated'); // Luigi animado
-
-    setTimeout(() => {
-      toast.info('Repartiendo cartas...');
-      setTimeout(() => {
-        console.log("Reparto de cartas completado, Luigi vuelve a estar estático.");
-        setLuigiState('static');
-        setIsDealing(false);
-      }, 2000); // Duración de la animación
-    }, 6000); // Tiempo inicial de espera antes de repartir
-  };
-
-  
-  
-
-  
 
   const seleccionarFicha = (color, valor) => {
     if (gameStatus !== 'EN_APUESTAS') {
@@ -408,10 +381,11 @@ const BlackjackTable = () => {
           {Object.entries(valoresFichas)
             .sort(([, valorA], [, valorB]) => valorA - valorB) // Ordena de menor a mayor
             .map(([color, valor]) => (
-              <div
+              <button
                 key={color}
                 className="ficha-container"
                 onClick={() => seleccionarFicha(color, valor)}
+                style={{ all: 'unset' }} // Para quitar los estilos predeterminados del botón y estilizarlo como quieras
               >
                 <img
                   src={{
@@ -425,7 +399,7 @@ const BlackjackTable = () => {
                   className="ficha"
                 />
                 <span className="ficha-valor">${valor}</span>
-              </div>
+              </button>
             ))}
         </div>
           <button className="boton-apostar" onClick={apostar}>
