@@ -357,11 +357,12 @@ const BlackjackTable = () => {
 
       <div className="main-container">
         <div className="left-column">
-          <div className="card-slots">
-            {userCards.map((card, index) => (
-              <img key={index} src={card} alt={`Carta ${index + 1}`} className="card-slot" />
-            ))}
-          </div>
+        <div className="card-slots">
+          {userCards.map((card) => (
+            <img key={card} src={card} alt={`Carta ${card}`} className="card-slot" />
+          ))}
+        </div>
+
 
           <div className="button-row">
             <button className="boton-doblar" onClick={() => playerAction('double')}>
@@ -423,18 +424,9 @@ const BlackjackTable = () => {
                     </div>
 
                     <div className="player-cards">
-                      {showCardsRef.current &&
-                        playerInfo[player]?.hand.map((card, index) => {
-                          const cardImage = getBitmapImage(card.suit, card.rank);
-                          return (
-                            <img
-                              key={index}
-                              src={cardImage}
-                              alt={`${card.rank} of ${card.suit}`}
-                              className="player-card"
-                            />
-                          );
-                        })}
+                      {userCards.map((card) => (
+                        <img key={card} src={card} alt={`Carta ${card}`} className="player-card" />
+                      ))}
                     </div>
                     <div className="player-info1">
                 <p>
