@@ -1,5 +1,5 @@
-// UserContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 const UserContext = createContext();
 
@@ -17,4 +17,9 @@ export const UserProvider = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
+};
+
+// Prop validation for the UserProvider component
+UserProvider.propTypes = {
+  children: PropTypes.node.isRequired, // Ensures that children are passed as a valid React node
 };
