@@ -61,7 +61,6 @@ const calculateTotalBet = (chips) => {
 };
 
 const History = () => {
-  const navigate = useNavigate();
   const { userId } = useUser(); // Obtener userId del contexto
 
   const [history, setHistory] = useState([]);
