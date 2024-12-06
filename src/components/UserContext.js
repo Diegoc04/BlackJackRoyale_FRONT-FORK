@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 const UserContext = createContext();
@@ -10,10 +10,18 @@ export const UserProvider = ({ children }) => {
   const [userName, setUserName] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
 
+  // Memoizing the context value to prevent unnecessary re-renders
+  const value = useMemo(() => ({
+    userId,
+    setUserId,
+    userName,
+    setUserName,
+    loadingUser,
+    setLoadingUser
+  }), [userId, userName, loadingUser]);
+
   return (
-    <UserContext.Provider
-      value={{ userId, setUserId, userName, setUserName, loadingUser, setLoadingUser }}
-    >
+    <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>
   );

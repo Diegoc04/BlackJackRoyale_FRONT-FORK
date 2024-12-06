@@ -357,11 +357,12 @@ const BlackjackTable = () => {
 
       <div className="main-container">
         <div className="left-column">
-          <div className="card-slots">
-            {userCards.map((card, index) => (
-              <img key={index} src={card} alt={`Carta ${index + 1}`} className="card-slot" />
-            ))}
-          </div>
+        <div className="card-slots">
+          {userCards.map((card) => (
+            <img key={card} src={card} alt={`Carta ${card}`} className="card-slot" />
+          ))}
+        </div>
+
 
           <div className="button-row">
             <button className="boton-doblar" onClick={() => playerAction('double')}>
