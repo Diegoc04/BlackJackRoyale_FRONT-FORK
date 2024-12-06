@@ -134,7 +134,7 @@ const History = () => {
           : game.players.find((player) => player.nickName === winnerName)?.hand || [];
 
       return (
-        <div key={gameId} className="history-item">
+        <div key={index} className="history-item">
           {/* Contenedor izquierdo */}
           <div className="result-container">
             <p className={`result-header ${resultClass}`}>
