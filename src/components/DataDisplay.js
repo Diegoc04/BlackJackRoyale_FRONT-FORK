@@ -175,7 +175,7 @@ export const IdTokenData = (props) => {
           <div className="footer-right">
             <div className="developer-cards">
               {developers.map((dev, index) => (
-                <div className="card" key={index}>
+                <div className="card" key={dev.id}>
                   <img src={dev.img} alt={dev.name} className="card-image" />
                   <p className="card-name">{dev.name}</p>
                 </div>

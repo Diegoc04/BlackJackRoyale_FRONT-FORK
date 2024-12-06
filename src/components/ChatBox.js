@@ -44,10 +44,10 @@ const ChatBox = ({ socket, roomId, userName, messages, onNewMessage, onMinimize 
       </div>
       <div className="chat-messages">
         {messages.map((msg, index) => (
-          <div key={index} className="chat-message">
+          <div key={msg.id} className="chat-message">
             <strong>{msg.sender}: </strong>
             <span>{msg.message}</span>
-          </div>
+          </div>        
         ))}
       </div>
       <div className="chat-input">
