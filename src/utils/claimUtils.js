@@ -7,22 +7,19 @@ export const createClaimsTable = (claims) => {
     let claimsObj = {};
     let index = 0;
 
+    const claimKeys = new Set(['name', 'preferred_username']);
+
     Object.keys(claims).forEach((key) => {
         if (typeof claims[key] !== 'string' && typeof claims[key] !== 'number') return;
-        switch (key) {
-            case 'name':
-                populateClaim(key, claims[key], index, claimsObj);
-                index++;
-                break;
-            case 'preferred_username':
-                populateClaim(key, claims[key], index, claimsObj);
-                index++;
-                break;
+        if (claimKeys.has(key)) {
+            populateClaim(key, claims[key], index, claimsObj);
+            index++;
         }
     });
+    
 
-    return claimsObj;
-};
+        return claimsObj;
+    };
 
 
 /**
