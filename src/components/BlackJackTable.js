@@ -318,7 +318,7 @@ const BlackjackTable = () => {
   };
 
   const renderChips = (chips) =>
-    chips.map((chip, index) => {
+    chips.map((chip) => {
       const chipImages = {
         NEGRO: negra,
         AZUL: azul,
@@ -327,7 +327,7 @@ const BlackjackTable = () => {
         ROJO: roja,
       };
       return (
-        <img key={index} src={chipImages[chip]} alt={`${chip} chip`} className="player-chip" />
+        <img key={chip} src={chipImages[chip]} alt={`${chip} chip`} className="player-chip" />
       );
     });
 
