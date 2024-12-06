@@ -55,11 +55,16 @@ const SelectTable = () => {
         console.log('Salas obtenidas del backend:', response.data);
         setTables(response.data);
       } catch (err) {
-        const errorMsg = err.response
-          ? `Error en la respuesta del servidor: ${err.response.status}`
-          : err.request
-          ? 'Error en la solicitud (sin respuesta del servidor).'
-          : `Error: ${err.message}`;
+        let errorMsg;
+        
+        if (err.response) {
+          errorMsg = `Error en la respuesta del servidor: ${err.response.status}`;
+        } else if (err.request) {
+          errorMsg = 'Error en la solicitud (sin respuesta del servidor).';
+        } else {
+          errorMsg = `Error: ${err.message}`;
+        }
+
         console.error(errorMsg);
         setError('Error al configurar el socket o cargar las salas. Por favor, intenta nuevamente.');
       } finally {
@@ -138,8 +143,8 @@ const SelectTable = () => {
                       Jugadores ({table.currentPlayers}/{table.maxPlayers})
                     </h3>
                     <ul className="players-list">
-                      {table.players.map((player, idx) => (
-                        <li key={idx} className="player-item">
+                      {table.players.map((player) => (
+                        <li key={player.id} className="player-item">
                           {player.nickName}
                         </li>
                       ))}
