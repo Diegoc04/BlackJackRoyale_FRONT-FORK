@@ -4,8 +4,8 @@ export const msalConfig = {
     auth: {
         clientId: '066fef70-45bd-422a-a870-149ae2f088f4', // ID de la aplicación registrada en Azure AD.
         authority: 'https://login.microsoftonline.com/common/v2.0', // Autoridad de Azure para autenticación.
-        redirectUri: 'https://blackjackroyaleapp-f6hagcdvc5bbejb0.canadacentral-01.azurewebsites.net/BlackJackRoyale', // Nueva URL de redirección.
-        postLogoutRedirectUri: 'https://blackjackroyaleapp-f6hagcdvc5bbejb0.canadacentral-01.azurewebsites.net/BlackJackRoyale', // Página a la que redirigir tras el logout.
+        redirectUri: 'http://localhost:3000/BlackJackRoyale', // Nueva URL de redirección.
+        postLogoutRedirectUri: 'http://localhost:3000/BlackJackRoyale', // Página a la que redirigir tras el logout.
         navigateToLoginRequestUrl: false, // Si "true", navega de vuelta al lugar original tras login.
     },
     cache: {

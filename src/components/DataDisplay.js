@@ -27,7 +27,7 @@ export const IdTokenData = (props) => {
 
       try {
         const response = await axios.get(
-          `https://blackjackroyalebackend-djfwh2cbbqb5ebdq.canadacentral-01.azurewebsites.net/api/users/${preferred_username}`
+          `http://localhost:8080/api/users/${preferred_username}`
         );
         console.log('Datos recibidos del backend:', response.data);
 
@@ -45,7 +45,7 @@ export const IdTokenData = (props) => {
         if (error.response && error.response.status === 404) {
           try {
             await axios.post(
-              'https://blackjackroyalebackend-djfwh2cbbqb5ebdq.canadacentral-01.azurewebsites.net/api/users',
+              'http://localhost:8080/api/users',
               {
                 email: preferred_username,
                 name: name,
@@ -86,7 +86,7 @@ export const IdTokenData = (props) => {
 
     try {
       await axios.put(
-        `https://blackjackroyalebackend-djfwh2cbbqb5ebdq.canadacentral-01.azurewebsites.net/api/users/${preferred_username}`,
+        `http://localhost:8080/api/users/${preferred_username}`,
         { nickName: nickname },
         { headers: { 'Content-Type': 'application/json' } }
       );

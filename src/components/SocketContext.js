@@ -28,7 +28,7 @@ export const SocketProvider = ({ children }) => {
     if (userId && userName) {
       console.log('Inicializando conexión de socket con:', { userId, userName });
 
-      const newSocket = io('https://blackjackroyalebackend-djfwh2cbbqb5ebdq.canadacentral-01.azurewebsites.net', {
+      const newSocket = io('http://localhost:9092', {
         path: '/socket.io',
         query: { id: userId, name: userName },
         transports: ['websocket'], 
@@ -75,6 +75,7 @@ export const SocketProvider = ({ children }) => {
     };
   }, [initializeSocket]);
 
+  // Asegurarse de que el socket esté siempre disponible
   useEffect(() => {
     if (!socket && userId && userName) {
       console.log('Socket no disponible. Reintentando inicialización.');
@@ -87,8 +88,4 @@ export const SocketProvider = ({ children }) => {
       {children}
     </SocketContext.Provider>
   );
-};
-
-SocketProvider.propTypes = {
-  children: PropTypes.node.isRequired,  // Ensure that children is passed as a valid React node
 };
